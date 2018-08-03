@@ -23,3 +23,12 @@ setInterval(() => {
     client.send(new Date().toTimeString());
   });
 }, 1000);
+
+wss.on('connection', function connection(ws) {
+
+	ws.on('message', function(message) {
+
+		console.log('message: ' + message);
+		ws.send('echo: ' + message);
+
+	});
